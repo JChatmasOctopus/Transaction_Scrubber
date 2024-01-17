@@ -70,7 +70,18 @@ jobs:
           # to ensure that existing images are not overwritten unintentionally. 
           push: false
           tags: jchatmas/transaction-scrubber:${{ steps.determine_version.outputs.semVer }}
-
+         
+      - name: 🐙Push Build Information  
+        env:
+          OCTOPUS_API_KEY: "${{ secrets.OCTOPUS_API_TOKEN }}"
+          OCTOPUS_URL: "https://demo.octopus.app"
+          OCTOPUS_SPACE: "Trading Team"
+        uses: OctopusDeploy/push-build-information-action@v3
+        with:
+            version: ${{ steps.determine_version.outputs.semVer }}
+            packages: |
+              0.2.8-mattc-green-frontend.4
+              
       - name: Create Octopus Release
         # When the image is being pushed, remove this if property to have the workflow create
         # a new release in Octopus. Creating a release without a valid image will fail,
