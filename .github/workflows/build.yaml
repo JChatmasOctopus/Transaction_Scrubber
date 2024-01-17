@@ -93,4 +93,4 @@ jobs:
           OCTOPUS_URL: "https://demo.octopus.app"
           OCTOPUS_SPACE: "Trading Team"
         with:
-          project: "Transaction Scrubber"
+          project: "Trading Platform Processor"
