@@ -78,9 +78,9 @@ jobs:
           OCTOPUS_SPACE: "Trading Team"
         uses: OctopusDeploy/push-build-information-action@v3
         with:
-            version: ${{ steps.determine_version.outputs.semVer }}
+            version: "0.2.8-mattc-green-frontend.4"
             packages: |
-              0.2.8-mattc-green-frontend.4
+              octopussamples/octopub-frontend
               
       - name: Create Octopus Release
         # When the image is being pushed, remove this if property to have the workflow create
